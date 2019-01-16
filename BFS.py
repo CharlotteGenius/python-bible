@@ -47,14 +47,14 @@ def BFS(graph, s):
     # 一直拿出第一个，知道队列里没有点可拿出
     
 start = 'A'
-parent = BFS(Graph,start)
+Parent = BFS(Graph,start)
 
 # 如果设置终点，需要找两个点的最短路径
 end = 'F'
 way = []
 while end != None:
     way.append(end)
-    end = parent[end]
+    end = Parent[end]
     # 从终点找每个点的前一个点，一直到起点
 for w in way[::-1]:
     print(w)

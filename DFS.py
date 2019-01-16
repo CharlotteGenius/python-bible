@@ -20,9 +20,12 @@ Graph = {
 def DFS(graph, s):
     stack = []
     seen = []
+    parent = {}
     # 运用栈，后进先出
     stack.append(s)
     seen.append(s)
+    parent[s] = None
+    
     while len(stack)>0:
         vertex = stack.pop(-1)
         nodes = Graph[vertex]
@@ -32,6 +35,21 @@ def DFS(graph, s):
             if n not in seen:
                 stack.append(n)
                 seen.append(n)
-        print(vertex)
+                parent[n] = vertex
+    return parent
+  
+start = 'E'
+end = 'F'
+
+Parent = DFS(Graph,start)
+print(Parent)
+
+# 如果设置终点，需要找两个点的最短路径
+way = []
+while end != None:
+    way.append(end)
+    end = Parent[end]
+    # 从终点找每个点的前一个点，一直到起点
+for w in way[::-1]:
+    print(w)
     
-DFS(Graph,'E')
